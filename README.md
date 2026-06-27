@@ -10,6 +10,6 @@ a massa de dados utilizada provém de um acervo governamental real de biblioteca
 
 No MongoDB Compass adicione a conexão "mongodb://localhost:27017", crie um database com o nome "biblioteca_virtual" com o nome de coleção "livros". Dentro de livros, importe o arquivo "exemplares-acervos.txt".
 
-Abra a pasta bda-bibliotecavirtual-front no vscode e instale os requisitos "pip install -r requirements.txt" pelo terminal. No terminal rode o app.py "python app.py" (ou py).
+Abra a pasta bda-bibliotecavirtual-front no vscode e instale os requisitos "pip install -r requirements.txt" pelo terminal. No terminal rode o app.py "python app.py" (ou "py app.py").
 
 Abra "http://127.0.0.1:5000/".
