@@ -6,7 +6,7 @@ a arquitetura da aplicação foi projetada de forma modular, dividindo a conexã
 
 a massa de dados utilizada provém de um acervo governamental real de bibliotecas (exemplares-acervo.csv), contendo registros detalhados de publicações.
 
-#TUTORIAL
+# TUTORIAL
 
 No MongoDB Compass adicione a conexão "mongodb://localhost:27017", crie um database com o nome "biblioteca_virtual" com o nome de coleção "livros". Dentro de livros, importe o arquivo "exemplares-acervos.txt".
 
