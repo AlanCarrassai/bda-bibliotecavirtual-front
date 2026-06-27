@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biblioteca Virtual</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+
+
+:root {
+  --pergaminho: #ecdfbf;
+  --pergaminho-claro: #f7f0da;
+  --tinta: #2a1d10;
+  --papiro-escuro: #3c2a16;
+  --dourado: #b8863a;
+  --dourado-claro: #d9ad5f;
+  --terracota: #9c3d26;
+  --sombra-pedra: rgba(42, 29, 16, 0.25);
+
+  --fonte-display: "Cinzel", "Trajan Pro", serif;
+  --fonte-corpo: "EB Garamond", "Garamond", Georgia, serif;
+
+  --raio: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  color: var(--tinta);
+  background-color: var(--pergaminho);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(184, 134, 58, 0.08), transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(156, 61, 38, 0.06), transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(42, 29, 16, 0.025) 0px,
+      rgba(42, 29, 16, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+
+
+header.frontao {
+  text-align: center;
+  padding: 56px 20px 36px;
+  position: relative;
+}
+
+.colunas-topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 18px;
+  color: var(--dourado);
+}
+
+.colunas-topo .linha {
+  height: 2px;
+  width: 90px;
+  background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+}
+
+.colunas-topo .simbolo {
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+}
+
+h1.titulo-biblioteca {
+  font-family: var(--fonte-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  color: var(--papiro-escuro);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+p.subtitulo {
+  font-family: var(--fonte-corpo);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--papiro-escuro);
+  opacity: 0.78;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+
+
+form.mesa-consulta {
+  background: var(--pergaminho-claro);
+  border: 1px solid rgba(184, 134, 58, 0.4);
+  border-radius: var(--raio);
+  padding: 28px 28px 22px;
+  margin-bottom: 38px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 10px 24px var(--sombra-pedra);
+  position: relative;
+}
+
+form.mesa-consulta::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(184, 134, 58, 0.25);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-family: var(--fonte-display);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin: 0 0 18px;
+}
+
+.grid-campos {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-family: var(--fonte-display);
+  font-size: 0.7rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--papiro-escuro);
+  margin-bottom: 7px;
+}
+
+.campo input {
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid rgba(58, 42, 22, 0.35);
+  border-bottom: 2px solid var(--dourado);
+  border-radius: 2px;
+  background: var(--pergaminho);
+  color: var(--tinta);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.campo input::placeholder {
+  color: rgba(42, 29, 16, 0.4);
+  font-style: italic;
+}
+
+.campo input:focus {
+  outline: 2px solid var(--terracota);
+  outline-offset: 1px;
+  background: #fffdf6;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.botoes button,
+.botoes a {
+  font-family: var(--fonte-display);
+  font-size: 0.78rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  border-radius: 2px;
+  border: 1px solid var(--dourado);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.botoes button {
+  background: var(--papiro-escuro);
+  color: var(--pergaminho-claro);
+}
+
+.botoes button:hover {
+  background: var(--terracota);
+  border-color: var(--terracota);
+  transform: translateY(-1px);
+}
+
+.botoes a {
+  background: transparent;
+  color: var(--papiro-escuro);
+}
+
+.botoes a:hover {
+  background: rgba(184, 134, 58, 0.12);
+  transform: translateY(-1px);
+}
+
+
+
+.result-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  font-family: var(--fonte-display);
+  font-size: 0.78rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--papiro-escuro);
+  border-bottom: 1px solid rgba(184, 134, 58, 0.4);
+  padding-bottom: 10px;
+}
+
+.result-meta strong {
+  color: var(--terracota);
+  font-size: 0.95rem;
+}
+
+
+
+.grade-livros {
+  column-width: 270px;
+  column-gap: 26px;
+}
+
+.ficha {
+  background: var(--pergaminho-claro);
+  border: 1px solid rgba(184, 134, 58, 0.45);
+  border-radius: var(--raio);
+  padding: 22px 20px 20px;
+  position: relative;
+  box-shadow: 0 6px 16px var(--sombra-pedra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  break-inside: avoid;
+  margin-bottom: 26px;
+  display: inline-block;
+  width: 100%;
+}
+
+.ficha:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px var(--sombra-pedra);
+}
+
+.ficha::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(184, 134, 58, 0.22);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.cabecalho-ficha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+
+.ficha h2.ficha-titulo {
+  font-family: var(--fonte-display);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin: 0;
+  color: var(--papiro-escuro);
+  flex: 1;
+}
+
+.ficha .ano {
+  font-family: var(--fonte-display);
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  color: var(--dourado);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.ficha .autor {
+  font-family: var(--fonte-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.4px;
+  color: var(--terracota);
+  margin: 0 0 4px;
+}
+
+.ficha .editora {
+  display: block;
+  font-size: 0.94rem;
+  letter-spacing: 0.3px;
+  color: rgba(42, 29, 16, 0.5);
+  font-style: italic;
+  margin: 0 0 12px;
+}
+
+.ficha .meta-secundaria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 12px;
+}
+
+.ficha .assunto {
+  font-size: 0.68rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--papiro-escuro);
+  background: rgba(184, 134, 58, 0.16);
+  border: 1px solid rgba(184, 134, 58, 0.4);
+  border-radius: 12px;
+  padding: 3px 10px;
+}
+
+.ficha .divisor {
+  border: none;
+  border-top: 1px dashed rgba(184, 134, 58, 0.5);
+  margin: 0 0 10px;
+}
+
+
+
+.vazio {
+  background: var(--pergaminho-claro);
+  border: 1px dashed rgba(184, 134, 58, 0.5);
+  border-radius: var(--raio);
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--papiro-escuro);
+  font-family: var(--fonte-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
+  line-height: 1.8;
+}
+
+
+
+@media (max-width: 760px) {
+  .grid-campos {
+    grid-template-columns: 1fr;
+  }
+  h1.titulo-biblioteca {
+    letter-spacing: 1.5px;
+  }
+  .grade-livros {
+    column-width: 100%;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ficha,
+  .botoes button,
+  .botoes a {
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--terracota);
+  outline-offset: 2px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="frontao">
+        <div class="colunas-topo">
+          <span class="linha"></span>
+          <span class="simbolo">𓋹 ⚜ 𓋹</span>
+          <span class="linha"></span>
+        </div>
+        <h1 class="titulo-biblioteca">Biblioteca Virtual</h1>
+        <p class="subtitulo">Aplicação web do trabalho acadêmico: "MongoDB: Análise Prática de Estruturas de Indexação e Busca"</p>
+      </header>
+
+      <form class="mesa-consulta" method="get" action="/">
+        <p class="eyebrow">Consulta</p>
+        <div class="grid-campos">
+          <div class="campo">
+            <label for="titulo">Título</label>
+            <input id="titulo" name="titulo" type="search" value="{{ params.get('titulo', '') }}" placeholder="Ex.: O Mistério da Rua" />
+          </div>
+          <div class="campo">
+            <label for="autor">Autor</label>
+            <input id="autor" name="autor" type="search" value="{{ params.get('autor', '') }}" placeholder="Ex.: Assis, Machado de" />
+          </div>
+          <div class="campo">
+            <label for="editora">Editora</label>
+            <input id="editora" name="editora" type="search" value="{{ params.get('editora', '') }}" placeholder="Ex.: Companhia das Letras" />
+          </div>
+          <div class="campo">
+            <label for="assunto">Assunto</label>
+            <input id="assunto" name="assunto" type="search" value="{{ params.get('assunto', '') }}" placeholder="Ex.: Direito civil" />
+          </div>
+          <div class="campo">
+            <label for="ano">Ano</label>
+            <input id="ano" name="ano" type="text" value="{{ params.get('ano', '') }}" placeholder="Ex.: 2010" />
+          </div>
+        </div>
+
+        <div class="botoes">
+          <button type="submit">Buscar</button>
+          <a href="/">Mostrar todos</a>
+        </div>
+      </form>
+
+      <div class="result-meta">
+        <div><strong>{{ total }}</strong> livro(s) encontrado(s)</div>
+        <div>Exibindo até <strong>{{ limite }}</strong> resultados</div>
+      </div>
+
+      {% if livros %}
+        <div class="grade-livros">
+          {% for livro in livros %}
+            <article class="ficha">
+              <div class="cabecalho-ficha">
+                <h2 class="ficha-titulo">{{ livro.titulo }}</h2>
+                <span class="ano">{{ livro.ano }}</span>
+              </div>
+              <p class="autor">{{ livro.autor }}</p>
+              <p class="editora">{{ livro.editora }}</p>
+              {% if livro.assunto %}
+                <div class="meta-secundaria">
+                  {% for assunto_item in livro.assunto.replace('-#$&', '.#$&').split('.#$&') %}
+                    {% if assunto_item.strip() %}
+                      <span class="assunto">{{ assunto_item.strip() }}</span>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <hr class="divisor" />
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="vazio">
+          {% if has_query %}
+            Nenhum livro encontrado com os critérios informados.
+          {% else %}
+            Ainda não há livros para exibir.<br />
+            Carregue dados usando o script de geração ou verifique a conexão com o MongoDB.
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  form.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        form.submit();
+      }
+    });
+  });
+
+  const fichas = document.querySelectorAll(".ficha");
+  fichas.forEach((ficha) => {
+    ficha.addEventListener("mouseenter", () => {
+      ficha.style.zIndex = "2";
+    });
+    ficha.addEventListener("mouseleave", () => {
+      ficha.style.zIndex = "1";
+    });
+  });
+});
+
+    </script>
+  </body>
+</html>
