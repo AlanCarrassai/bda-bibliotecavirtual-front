@@ -14,7 +14,6 @@ def build_filter(args):
     editora = args.get("editora", "").strip()
     ano = args.get("ano", "").strip()
     assunto = args.get("assunto", "").strip()
-    sinopse = args.get("sinopse", "").strip()
 
     if titulo:
         filtro["titulo"] = {"$regex": re.compile(re.escape(titulo), re.IGNORECASE)}
@@ -31,9 +30,6 @@ def build_filter(args):
 
     if assunto:
         filtro["assunto"] = {"$regex": re.compile(re.escape(assunto), re.IGNORECASE)}
-
-    if sinopse:
-        filtro["sinopse"] = {"$regex": re.compile(re.escape(sinopse), re.IGNORECASE)}
 
     return filtro
 
